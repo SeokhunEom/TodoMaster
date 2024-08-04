@@ -8,7 +8,7 @@ const CreateButton = ({ onClick }: CreateButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className='flex h-14 w-24 items-center justify-center gap-2 rounded-lg bg-blue-dark text-lg font-bold text-gray-100 hover:bg-blue'>
+      className='flex h-14 min-w-24 items-center justify-center gap-2 rounded-lg bg-blue-dark text-lg font-bold text-gray-100 hover:bg-blue'>
       <div>추가</div>
       <Icons8Plus />
     </button>

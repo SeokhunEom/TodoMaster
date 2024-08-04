@@ -11,7 +11,7 @@ const Input = ({ placeholder, value, onChange }: InputProps) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className='w-full rounded-lg bg-gray-700 p-4 text-gray-100 placeholder:text-gray-300'
+      className='w-full rounded-lg bg-gray-300 p-4 text-gray-100 placeholder:text-gray-300'
     />
   );
 };
