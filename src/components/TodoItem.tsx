@@ -1,11 +1,11 @@
-import CheckBox from './CheckBox'
-import DeleteButton from './DeleteButton'
+import CheckBox from './CheckBox';
+import DeleteButton from './DeleteButton';
 
 interface TodoItemProps {
-  checked: boolean
-  onCheckBoxClick: () => void
-  onDeleteButtonClick: () => void
-  todoTitle: string
+  checked: boolean;
+  onCheckBoxClick: () => void;
+  onDeleteButtonClick: () => void;
+  todoTitle: string;
 }
 
 const TodoItem = ({
@@ -27,7 +27,7 @@ const TodoItem = ({
         <DeleteButton onClick={onDeleteButtonClick} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TodoItem
+export default TodoItem;

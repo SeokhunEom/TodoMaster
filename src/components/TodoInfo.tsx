@@ -1,6 +1,6 @@
 interface TodoInfoProps {
-  todoCount: number
-  completedCount: number
+  todoCount: number;
+  completedCount: number;
 }
 
 const TodoInfo = ({ todoCount, completedCount }: TodoInfoProps) => {
@@ -19,7 +19,7 @@ const TodoInfo = ({ todoCount, completedCount }: TodoInfoProps) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TodoInfo
+export default TodoInfo;
