@@ -39,6 +39,7 @@ const TodoList = ({ todos }: TodoListProps) => {
           <RiTodoLine width='6em' height='6em' className='text-gray-400' />
           <div>아직 추가된 할 일이 없습니다.</div>
           <div>할 일을 추가해주세요.</div>
+          <div>AI가 당신의 할 일을 세분화해 드립니다.</div>
         </div>
       )}
     </main>

@@ -8,7 +8,7 @@ const MoreButton = ({ onClick }: MoreButtonProps) => {
   return (
     <button
       onClick={onClick}
-      className='flex h-6 w-6 items-center justify-center rounded text-gray-300 hover:bg-gray-400 hover:text-blue'>
+      className='flex h-6 w-6 animate-bounce items-center justify-center rounded text-gray-300 hover:bg-gray-400 hover:text-blue'>
       <IconamoonArrowDown2Bold width='1.2em' height='1.2em' />
     </button>
   );
