@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { fetchAI } from './gemini';
 import useTodoStore from './store';
 import CreateButton from './components/CreateButton';
 import Header from './components/Header';
@@ -7,7 +8,7 @@ import Input from './components/Input';
 import TodoList from './components/TodoList';
 
 function App() {
-  const { todos, addTodo } = useTodoStore((state) => state);
+  const { todos, addTodo, addStep } = useTodoStore((state) => state);
   const [value, setValue] = useState('');
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,12 +19,18 @@ function App() {
     if (!value) {
       return;
     }
+    const id = uuidv4();
     addTodo({
-      id: uuidv4(),
+      id,
       checked: false,
       todoTitle: value,
     });
     setValue('');
+
+    fetchAI(value).then((steps) => {
+      console.log(steps);
+      addStep(id, steps);
+    });
   };
 
   return (

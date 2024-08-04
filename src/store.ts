@@ -5,6 +5,11 @@ export interface TodoItemType {
   id: string;
   checked: boolean;
   todoTitle: string;
+  steps?: Step;
+}
+
+export interface Step {
+  steps: string[];
 }
 
 interface TodoStore {
@@ -12,6 +17,7 @@ interface TodoStore {
   addTodo: (todo: TodoItemType) => void;
   toggleTodo: (id: string) => void;
   removeTodo: (id: string) => void;
+  addStep: (id: string, step: Step) => void;
 }
 
 const useTodoStore = create<TodoStore>()(
@@ -29,6 +35,12 @@ const useTodoStore = create<TodoStore>()(
         removeTodo: (id) =>
           set((state) => ({
             todos: state.todos.filter((todo) => todo.id !== id),
+          })),
+        addStep: (id, step) =>
+          set((state) => ({
+            todos: state.todos.map((todo) =>
+              todo.id === id ? { ...todo, steps: step } : todo
+            ),
           })),
       }),
       {

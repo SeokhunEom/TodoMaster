@@ -12,6 +12,7 @@ const TodoItem = ({
   onCheckBoxClick,
   onDeleteButtonClick,
   todoTitle,
+  steps,
 }: TodoItemProps) => {
   return (
     <div className='flex w-full gap-3 rounded-lg bg-gray-500 p-4'>
@@ -21,6 +22,7 @@ const TodoItem = ({
       <div
         className={`${checked ? 'text-gray-300 line-through' : 'text-gray-100'}`}>
         {todoTitle}
+        {steps?.steps.join(', ')}
       </div>
       <div className='ml-auto shrink-0'>
         <DeleteButton onClick={onDeleteButtonClick} />
