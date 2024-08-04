@@ -1,9 +1,7 @@
+import Header from './components/Header'
+
 function App() {
-  return (
-    <p className='read-the-docs text-3xl font-bold underline'>
-      Click on the Vite and React logos to learn more
-    </p>
-  )
+  return <Header />
 }
 
 export default App
