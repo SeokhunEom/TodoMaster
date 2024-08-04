@@ -1,12 +1,10 @@
+import { TodoItemType } from '../store';
 import CheckBox from './CheckBox';
 import DeleteButton from './DeleteButton';
 
-export interface TodoItemProps {
-  id: number;
-  checked: boolean;
+export interface TodoItemProps extends TodoItemType {
   onCheckBoxClick: () => void;
   onDeleteButtonClick: () => void;
-  todoTitle: string;
 }
 
 const TodoItem = ({

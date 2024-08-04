@@ -1,9 +1,31 @@
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import useTodoStore from './store';
 import CreateButton from './components/CreateButton';
 import Header from './components/Header';
 import Input from './components/Input';
 import TodoList from './components/TodoList';
 
 function App() {
+  const { todos, addTodo } = useTodoStore((state) => state);
+  const [value, setValue] = useState('');
+
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
+  const createButtonClick = () => {
+    if (!value) {
+      return;
+    }
+    addTodo({
+      id: uuidv4(),
+      checked: false,
+      todoTitle: value,
+    });
+    setValue('');
+  };
+
   return (
     <>
       <div className='absolute z-10 h-56 w-full bg-gray-700'></div>
@@ -13,10 +35,11 @@ function App() {
           <div className='flex gap-4 py-16'>
             <Input
               placeholder='할 일을 입력해주세요'
-              value=''
-              onChange={() => {}}
+              value={value}
+              onChange={onInputChange}
+              onEnter={createButtonClick}
             />
-            <CreateButton onClick={() => {}} />
+            <CreateButton onClick={createButtonClick} />
           </div>
           <TodoList todos={todos} />
         </div>
@@ -24,134 +47,5 @@ function App() {
     </>
   );
 }
-
-const todos = [
-  {
-    id: 1,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '밥 먹기',
-  },
-  {
-    id: 2,
-    checked: true,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '커피 마시기',
-  },
-  {
-    id: 3,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '코드 작성하기',
-  },
-  {
-    id: 1,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '밥 먹기',
-  },
-  {
-    id: 2,
-    checked: true,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '커피 마시기',
-  },
-  {
-    id: 3,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '코드 작성하기',
-  },
-  {
-    id: 1,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '밥 먹기',
-  },
-  {
-    id: 2,
-    checked: true,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '커피 마시기',
-  },
-  {
-    id: 3,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '코드 작성하기',
-  },
-  {
-    id: 1,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '밥 먹기',
-  },
-  {
-    id: 2,
-    checked: true,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '커피 마시기',
-  },
-  {
-    id: 3,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '코드 작성하기',
-  },
-  {
-    id: 1,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '밥 먹기',
-  },
-  {
-    id: 2,
-    checked: true,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '커피 마시기',
-  },
-  {
-    id: 3,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '코드 작성하기',
-  },
-  {
-    id: 1,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '밥 먹기',
-  },
-  {
-    id: 2,
-    checked: true,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '커피 마시기',
-  },
-  {
-    id: 3,
-    checked: false,
-    onCheckBoxClick: () => {},
-    onDeleteButtonClick: () => {},
-    todoTitle: '코드 작성하기',
-  },
-];
 
 export default App;

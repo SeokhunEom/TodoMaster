@@ -1,11 +1,14 @@
+import useTodoStore, { TodoItemType } from '../store';
 import TodoInfo from './TodoInfo';
-import TodoItem, { TodoItemProps } from './TodoItem';
+import TodoItem from './TodoItem';
 
 interface TodoListProps {
-  todos: TodoItemProps[];
+  todos: TodoItemType[];
 }
 
 const TodoList = ({ todos }: TodoListProps) => {
+  const { toggleTodo, removeTodo } = useTodoStore((state) => state);
+
   const todoCount = todos.length;
   const completedCount = todos.filter((todo) => todo.checked).length;
 
@@ -13,10 +16,18 @@ const TodoList = ({ todos }: TodoListProps) => {
     <main className='flex flex-col gap-6'>
       <TodoInfo todoCount={todoCount} completedCount={completedCount} />
       <ul className='flex flex-col gap-3'>
-        {todos.map((props) => {
+        {todos.map((todo) => {
           return (
-            <li>
-              <TodoItem key={props.id} {...props} />
+            <li key={todo.id}>
+              <TodoItem
+                {...todo}
+                onCheckBoxClick={() => {
+                  toggleTodo(todo.id);
+                }}
+                onDeleteButtonClick={() => {
+                  removeTodo(todo.id);
+                }}
+              />
             </li>
           );
         })}
