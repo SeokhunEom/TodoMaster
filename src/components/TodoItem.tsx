@@ -1,7 +1,8 @@
 import CheckBox from './CheckBox';
 import DeleteButton from './DeleteButton';
 
-interface TodoItemProps {
+export interface TodoItemProps {
+  id: number;
   checked: boolean;
   onCheckBoxClick: () => void;
   onDeleteButtonClick: () => void;
