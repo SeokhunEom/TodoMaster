@@ -1,7 +1,10 @@
 const Header = () => {
   return (
-    <header>
-      <h1>My React App</h1>
+    <header className='w-full'>
+      <h1 className='flex justify-center gap-2 text-5xl'>
+        <span className='text-blue'>Todo</span>{' '}
+        <span className='text-purple-dark'>Master</span>
+      </h1>
     </header>
   );
 };
